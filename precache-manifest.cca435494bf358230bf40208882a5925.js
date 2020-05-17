@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "096330d20c96b4895dbf76c8077aaaff",
+    "revision": "39116e693060079a9f407715947394c5",
     "url": "/weather-byte/index.html"
   },
   {
-    "revision": "22351a2c101c33fb0b1b",
-    "url": "/weather-byte/static/css/main.c214dd87.chunk.css"
+    "revision": "61a94317701187cb6b5c",
+    "url": "/weather-byte/static/css/main.d2e9614b.chunk.css"
   },
   {
-    "revision": "805dbe0db01e522c2f0d",
-    "url": "/weather-byte/static/js/2.ed7d140b.chunk.js"
+    "revision": "f168080a967deca2659e",
+    "url": "/weather-byte/static/js/2.f922cc37.chunk.js"
   },
   {
     "revision": "5ac48c47bb3912b14c2d8de4f56d5ae8",
-    "url": "/weather-byte/static/js/2.ed7d140b.chunk.js.LICENSE.txt"
+    "url": "/weather-byte/static/js/2.f922cc37.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "22351a2c101c33fb0b1b",
-    "url": "/weather-byte/static/js/main.21497fde.chunk.js"
+    "revision": "61a94317701187cb6b5c",
+    "url": "/weather-byte/static/js/main.b9422262.chunk.js"
   },
   {
     "revision": "7e2a2e93c20f1ab386be",
@@ -61,7 +61,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   },
   {
     "revision": "bdfd90660e255931a9574cc6c4371fbd",
-    "url": "/weather-byte/static/media/cloudy.bdfd9066.svg"
+    "url": "/weather-byte/static/media/cloudy-day.bdfd9066.svg"
+  },
+  {
+    "revision": "08ac10ac6ada4f8e7056ac6de9d9bd1a",
+    "url": "/weather-byte/static/media/cloudy-night.08ac10ac.svg"
   },
   {
     "revision": "d34217fb4d19e9579f64f9456d7fd6a2",
