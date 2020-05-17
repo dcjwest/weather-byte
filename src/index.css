@@ -1,13 +1,57 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+:root {
+  --accent: rgba(255, 255, 255, 0.7);
+  --bg-day: linear-gradient(0deg, rgba(9,9,121,1) 0%, rgba(9,154,230,1) 75%, rgba(0,212,255,1) 100%);
+  --bg-night: linear-gradient(0deg, rgba(4,4,47,1) 30%, rgba(9,9,114,1) 80%, rgba(15,15,176,1) 100%);
+  font-size: 16px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  /* background: rgb(9,9,121);
+  background: var(--bg-day);
+  background-attachment: fixed;
+  background-size: cover; */
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
+}
+
+a, a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, 
+button:focus,
+button:hover {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+hr {
+  border-top-color: rgba(255, 255, 255, 0.3);
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  pointer-events: none;
+}
+
+@media (min-width: 1440px) {
+  :root { font-size: 1.4vw;}
 }
