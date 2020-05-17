@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/weather-byte/static/css/main.c214dd87.chunk.css",
+    "main.js": "/weather-byte/static/js/main.e9823861.chunk.js",
+    "main.js.map": "/weather-byte/static/js/main.e9823861.chunk.js.map",
+    "runtime-main.js": "/weather-byte/static/js/runtime-main.6a6d7b65.js",
+    "runtime-main.js.map": "/weather-byte/static/js/runtime-main.6a6d7b65.js.map",
+    "static/js/2.ed7d140b.chunk.js": "/weather-byte/static/js/2.ed7d140b.chunk.js",
+    "static/js/2.ed7d140b.chunk.js.map": "/weather-byte/static/js/2.ed7d140b.chunk.js.map",
+    "index.html": "/weather-byte/index.html",
+    "precache-manifest.bd1e8280ee42bce663a714c90e403ff2.js": "/weather-byte/precache-manifest.bd1e8280ee42bce663a714c90e403ff2.js",
+    "service-worker.js": "/weather-byte/service-worker.js",
+    "static/css/main.c214dd87.chunk.css.map": "/weather-byte/static/css/main.c214dd87.chunk.css.map",
+    "static/js/2.ed7d140b.chunk.js.LICENSE.txt": "/weather-byte/static/js/2.ed7d140b.chunk.js.LICENSE.txt",
+    "static/media/clear-day.svg": "/weather-byte/static/media/clear-day.fbbe405e.svg",
+    "static/media/clear-night.svg": "/weather-byte/static/media/clear-night.08655708.svg",
+    "static/media/cloud-bite.svg": "/weather-byte/static/media/cloud-bite.4de8985c.svg",
+    "static/media/cloud.svg": "/weather-byte/static/media/cloud.fc330852.svg",
+    "static/media/cloud_bg1.png": "/weather-byte/static/media/cloud_bg1.eada737d.png",
+    "static/media/cloud_bg2.png": "/weather-byte/static/media/cloud_bg2.fdc1c2a6.png",
+    "static/media/cloud_bg3.png": "/weather-byte/static/media/cloud_bg3.406914f6.png",
+    "static/media/cloud_bg4.png": "/weather-byte/static/media/cloud_bg4.070fbd13.png",
+    "static/media/cloud_bg5.png": "/weather-byte/static/media/cloud_bg5.0db8e728.png",
+    "static/media/cloudy.svg": "/weather-byte/static/media/cloudy.bdfd9066.svg",
+    "static/media/fog.svg": "/weather-byte/static/media/fog.d34217fb.svg",
+    "static/media/partly-cloudy-day.svg": "/weather-byte/static/media/partly-cloudy-day.8b4ad53c.svg",
+    "static/media/partly-cloudy-night.svg": "/weather-byte/static/media/partly-cloudy-night.b63ded90.svg",
+    "static/media/rain.svg": "/weather-byte/static/media/rain.5fcdec4d.svg",
+    "static/media/snow.svg": "/weather-byte/static/media/snow.a1cee43e.svg",
+    "static/media/thunderstorm.svg": "/weather-byte/static/media/thunderstorm.381339ec.svg",
+    "static/media/wind.svg": "/weather-byte/static/media/wind.77fc2379.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6a6d7b65.js",
+    "static/js/2.ed7d140b.chunk.js",
+    "static/css/main.c214dd87.chunk.css",
+    "static/js/main.e9823861.chunk.js"
+  ]
+}
