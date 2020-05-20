@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import Container from 'react-bootstrap/Container';
 import Loader from './Loader';
+import Options from './Options';
 import Summary from './Summary';
 import HourlyForecast from './HourlyForecast';
 import DailyForecast from './DailyForecast';
@@ -15,9 +16,11 @@ import './App.css';
 const App = () => {
   const [appLoaded, setAppLoaded] = useState(false);
   const [currentLocation, setCurrentLocation] = useState('');
+  const [weatherApi, setWeatherApi] = useState('');
   const [weatherData, setWeatherData] = useState({});
   const [updateTime, setUpdateTime] = useState('');
-  const { setInitialWeather } = useContext(GlobalContext);
+  const { setInitialWeather, daily } = useContext(GlobalContext);
+  let sunrise_time, sunset_time;
 
   // Request geolocation to determine user's current position.
   function getUserPosition() {
@@ -39,6 +42,7 @@ const App = () => {
   useEffect(() => {
     async function getInitialWeatherData() {
       const DEFAULT_LATITUDE = -33.934444, DEFAULT_LONGITUDE = 18.869167;  // Stellenbosch set as default.
+      const proxy = 'https://cors-anywhere.herokuapp.com/'; // Enables cross-origin requests to anywhere.
       let lat, long;
 
       // Set user's coordinates if provided.
@@ -60,8 +64,10 @@ const App = () => {
 
       // Retrieve weather data for particular location. SI units used by default.
       fetch(
-        `https://api.darksky.net/forecast/6385bf526a557ab35c6534562b693fdc/${lat},${long}?units=si`
-      ).then(res => res.json()).then(data => setWeatherData(data));
+        `${proxy}https://api.darksky.net/forecast/6385bf526a557ab35c6534562b693fdc/${lat},${long}?units=si`
+      ).then(res => res.json()).then(data => setWeatherData(data)).catch(err => console.log('There was a problem... ', err));
+      // Store API string to be able to make future requests.
+      setWeatherApi(`${proxy}https://api.darksky.net/forecast/6385bf526a557ab35c6534562b693fdc/${lat},${long}`);
     }
 
     getInitialWeatherData();
@@ -71,15 +77,20 @@ const App = () => {
   // Initialise app with retrieved data.
   useEffect(() => {
     if (Object.keys(weatherData).length !== 0) {
-      let now = new Date();
-      let hours = now.getHours();
-      let minutes = now.getMinutes();
-
-      setUpdateTime(`Last updated: ${hours < 10? '0'+hours:hours}:${minutes < 10? '0'+minutes:minutes}`);
+      setLastUpdateTime();
       setInitialWeather(weatherData);
       setAppLoaded(true);
     }
   }, [weatherData, setInitialWeather]);
+
+  // Set the time of the last API request.
+  function setLastUpdateTime() {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+
+      setUpdateTime(`Last updated: ${hours < 10? '0'+hours:hours}:${minutes < 10? '0'+minutes:minutes}`);
+  }
 
   /* Convert API timestamp (given in seconds) to readable date-time values. */
   function convertUnixTime(timeStamp) {
@@ -102,31 +113,36 @@ const App = () => {
     return iconList[weatherType.replace(/-/g, '_')];
   }
 
-  function setTheme(timeOfDay) {
+  // Set the background gradient based on time of day.
+  function setTheme() {
     const dayTheme = window.getComputedStyle(document.documentElement).getPropertyValue('--bg-day');
     const nightTheme = window.getComputedStyle(document.documentElement).getPropertyValue('--bg-night');
-    const appBackground = document.querySelector('.background');
+    const timeNow = new Date().getTime() / 1000;
 
-    if (timeOfDay === 'night') {
-      appBackground.style.backgroundImage = nightTheme;
+    if (Object.keys(daily).length !== 0) {
+      const { sunriseTime, sunsetTime } = daily[0];
+      sunrise_time = sunriseTime;
+      sunset_time = sunsetTime;
+
+      return timeNow < sunrise_time || timeNow > sunset_time? nightTheme : dayTheme;
     }
-    else {
-      appBackground.style.backgroundImage = dayTheme;
-    }
+
+    return dayTheme;
   }
 
   return (
     <>
-      <div className='background'></div>
+      <div className='background' style={{backgroundImage: setTheme()}}></div>
       <Loader appLoaded={appLoaded} />
       <div className='App'>
         <Container>
+          <Options setLastUpdateTime={setLastUpdateTime} weatherApi={weatherApi} />
           <Summary currentLocation={currentLocation} updateTime={updateTime} /><hr />
           <HourlyForecast convertUnixTime={convertUnixTime} getWeatherIcon={getWeatherIcon} /><hr />
           <DailyForecast convertUnixTime={convertUnixTime} getWeatherIcon={getWeatherIcon} /><hr />
           <ComfortLevel /><hr />
           <Wind /><hr />
-          <SunAndMoon setTheme={setTheme} /><hr />
+          <SunAndMoon /><hr />
           <Footer />
         </Container>
       </div>

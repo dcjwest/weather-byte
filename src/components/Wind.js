@@ -6,14 +6,15 @@ import Col from 'react-bootstrap/Col';
 import Windmill from './Windmill';
 
 const Wind = () => {
-    const { currently } = useContext(GlobalContext);
+    const { currently, units } = useContext(GlobalContext);
     let windDirection = '', windVelocity = 0;
 
     if (Object.keys(currently).length !== 0) {
         const { windBearing, windSpeed} = currently;
         
-        windDirection = degreesToCompass(windBearing) || 'None'; // Convert degrees to textual compass direction
-        windVelocity = Math.round(windSpeed * 3.6) // Convert metres/second to kilometres/hour
+        windDirection = degreesToCompass(windBearing) || 'None'; // Convert degrees to textual compass direction.
+        windVelocity =  units === 'fah'? `${Math.round(windSpeed)} mph` // Imperial units: API default is miles/hour.
+                        :`${Math.round(windSpeed * 3.6)} km/h` // SI units: Convert API's metres/second to kilometres/hour.
     }
 
     function degreesToCompass(deg) {
@@ -39,7 +40,7 @@ const Wind = () => {
                     </Row>
                     <Row>
                         <Col className='data_title' xs={5} sm={6}>Speed</Col>
-                        <Col className='data_value' xs={7} sm={6}>{`${windVelocity} km/h`}</Col>
+                        <Col className='data_value' xs={7} sm={6}>{windVelocity}</Col>
                     </Row>
                 </Col>
             </Row>

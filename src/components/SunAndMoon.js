@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState, useCallback } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import Container from 'react-bootstrap/Container';
 import { IconContext } from 'react-icons';
@@ -14,7 +14,9 @@ import {
     WiMoonAltWaningCrescent4
 } from 'react-icons/wi';
 
-const SunAndMoon = ({ setTheme }) => {
+const SunAndMoon = () => {
+    const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+    const [animateSun, setAnimateSun] = useState(false);
     const { daily } = useContext(GlobalContext);
     let sunrise_time, sunset_time, fullDayTime, lunarPhase, lunarIcon;
 
@@ -24,10 +26,66 @@ const SunAndMoon = ({ setTheme }) => {
         sunrise_time = sunriseTime;
         sunset_time = sunsetTime;
         fullDayTime = sunset_time - sunrise_time;
-
-        setSunPosition();
         lunarPhase = getLunarPhaseText(moonPhase);
     }
+
+    // Animate sun's position/trajectory on scroll.
+    useEffect(() => {
+        const sunWrapper = document.querySelector('.sun-wrapper');
+        const sunCurrentPath = document.querySelector('.sun-path-current');
+        const timeNow = Math.floor(new Date().getTime() / 1000);
+        const sunElapsedTime = timeNow - sunrise_time;
+        const percent = sunElapsedTime / fullDayTime;
+        const radius = sunCurrentPath.r.baseVal.value;
+        const circumference = Math.round(2 * Math.PI * radius);
+        let offset, degreesToRotate;
+
+        // Fix sun's position at sunrise.
+        if (timeNow < sunrise_time) {
+            offset =  circumference;
+            degreesToRotate = 0;
+        }
+        // Fix sun's position at sunset.
+        else if (sunElapsedTime >= fullDayTime) {
+            offset = 0.5*circumference;
+            degreesToRotate = 180;
+        }
+        else {
+            // Animate sun from sunrise to current position if visible in viewport.
+            if (animateSun) {
+                offset = circumference - percent * 0.5 * circumference;
+                degreesToRotate = percent*180;
+            }
+            // Reset sun to sunrise position when not in viewport.
+            else {
+                offset = circumference;
+                degreesToRotate = 0;
+            }
+        }
+        sunCurrentPath.style.strokeDashoffset = offset;
+        sunWrapper.style.transform = `rotate(${degreesToRotate}deg)`;
+
+    }, [animateSun, sunrise_time, fullDayTime]);
+
+    const checkPosition = useCallback(() => {
+        const sunWrapper = document.querySelector('.sun-wrapper');
+        const sunPositionFromTop = sunWrapper.getBoundingClientRect().top;
+
+        if (sunPositionFromTop - windowHeight <= 0) setAnimateSun(true);
+        else setAnimateSun(false)
+
+    }, [windowHeight]);
+
+    // Check whether window is resized or if user scrolls down to animate sun on scroll.
+    useEffect(() => {
+        window.addEventListener('scroll', checkPosition);
+        window.addEventListener('resize', () => setWindowHeight(window.innerHeight));
+
+        return () => {
+            window.removeEventListener('scroll', checkPosition);
+            window.removeEventListener('resize', () => setWindowHeight(window.innerHeight));
+        }
+    }, [checkPosition]);
 
     function convertTime(timeStamp) {
         const newTime = new Date(timeStamp*1000);
@@ -35,35 +93,6 @@ const SunAndMoon = ({ setTheme }) => {
         const min = newTime.getMinutes();
 
         return `${hour < 10? '0'+hour : hour}:${min < 10? '0'+min : min}`;
-    }
-
-    /* Animate sun's position/trajectory determined by sunrise, sunset, and current time.
-        Also set app theme based on whether it's day or night. */
-    function setSunPosition() {
-        const sunWrapper = document.querySelector('.sun-wrapper');
-        const sunCurrentPath = document.querySelector('.sun-path-current');
-        const timeNow = Math.floor(new Date().getTime() / 1000);
-        const sunElapsedTime = timeNow - sunrise_time;
-        const radius = sunCurrentPath.r.baseVal.value;
-        const circumference = Math.round(2 * Math.PI * radius);
-
-        if (sunElapsedTime >= fullDayTime) {
-            sunCurrentPath.style.strokeDashoffset = 0.5*circumference;
-            sunWrapper.style.transform = `rotate(${180}deg)`;
-            setTheme('night');
-        }
-        else if (timeNow < sunrise_time) {
-            sunCurrentPath.style.strokeDashoffset = circumference;
-            sunWrapper.style.transform = `rotate(${0}deg)`;
-            setTheme('night');
-        }
-        else {
-            const percent = sunElapsedTime / fullDayTime;
-            const offset = circumference - percent * 0.5 * circumference;
-            sunCurrentPath.style.strokeDashoffset = offset;
-            sunWrapper.style.transform = `rotate(${percent*180}deg)`;
-            setTheme('day');
-        }
     }
 
     /* Get textual moon phase and icon based on given Lunation Number.

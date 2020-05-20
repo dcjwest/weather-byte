@@ -1,8 +1,9 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
 
 const Footer = () => {
     return (
-        <div className='footer-wrapper'>
+        <Container className='footer-wrapper'>
             <a href='https://davidcjwest.tk/' 
                 className='author'  
                 target='_blank' 
@@ -16,7 +17,7 @@ const Footer = () => {
                 <a href='https://www.flaticon.com/authors/dinosoftlabs' title='DinosoftLabs' target='_blank' rel='noopener noreferrer'> DinosoftLabs </a> 
                 from <a href='https://www.flaticon.com/' title='Flaticon' target='_blank' rel='noopener noreferrer'> www.flaticon.com</a>
             </div>
-        </div>
+        </Container>
     );
 }
 

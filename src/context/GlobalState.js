@@ -2,7 +2,7 @@ import React, { createContext, useReducer, useCallback } from 'react';
 import AppReducer from './AppReducer';
 
 const initialState = {
-    currently: {}, hourly: [], daily: []
+    currently: {}, hourly: [], daily: [], units: 'cel'
 }
 
 export const GlobalContext = createContext(initialState);
@@ -20,12 +20,29 @@ export const GlobalProvider = ({ children }) => {
         });
     }, []);
 
+    const updateWeather = data => {
+        dispatch({
+            type: 'UPDATE_WEATHER',
+            payload: data
+        });
+    }
+
+    const switchUnits = units => {
+        dispatch({
+            type: 'SWITCH_UNITS',
+            payload: units
+        });
+    }
+
     return (
         <GlobalContext.Provider value={{
             currently: state.currently,
             hourly: state.hourly,
             daily: state.daily,
-            setInitialWeather
+            units: state.units,
+            setInitialWeather,
+            updateWeather,
+            switchUnits
         }}>
             {children}
         </GlobalContext.Provider>

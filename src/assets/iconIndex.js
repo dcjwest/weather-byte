@@ -1,6 +1,7 @@
 import clear_day from './images/weather-icons/clear-day.svg';
 import clear_night from './images/weather-icons/clear-night.svg';
-import cloudy from './images/weather-icons/cloudy.svg';
+import cloudy_day from './images/weather-icons/cloudy-day.svg';
+import cloudy_night from './images/weather-icons/cloudy-night.svg';
 import fog from './images/weather-icons/fog.svg';
 import partly_cloudy_day from './images/weather-icons/partly-cloudy-day.svg';
 import partly_cloudy_night from './images/weather-icons/partly-cloudy-night.svg';
@@ -13,7 +14,8 @@ import wind from './images/weather-icons/wind.svg';
 const iconList = {
     clear_day,
     clear_night,
-    cloudy,
+    cloudy_day,
+    cloudy_night,
     fog,
     partly_cloudy_day,
     partly_cloudy_night,

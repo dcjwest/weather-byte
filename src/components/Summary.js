@@ -23,11 +23,12 @@ const Summary = ({ currentLocation, updateTime }) => {
         <Container className='summary-wrapper flex-center'>
             <Container className='flex-center'>
                 <div className='location'>{currentLocation}</div>
-                <button className='location-btn'>
-                    <IconContext.Provider value={{className: 'icon location-icon'}}>
-                        <MdLocationOn />
-                    </IconContext.Provider>
-                </button>
+                {/* <button className='location-btn'>
+                    
+                </button> */}
+                <IconContext.Provider value={{className: 'icon location-icon'}}>
+                    <MdLocationOn />
+                </IconContext.Provider>
             </Container>
             <div className="current-temp flex-center">
                 <span className='current-temp-val'>{currentTemp}</span>

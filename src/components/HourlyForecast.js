@@ -24,10 +24,18 @@ const HourlyForecast = ({ convertUnixTime, getWeatherIcon }) => {
 
     if (Object.keys(hourly).length !== 0) {
         hourCarousel = hourly.map((hourItem, index) => {
+            let currentHour = new Date(hourItem.time*1000).getHours();
+            let icon = hourItem.icon;
+            // API doesn't differentiate between cloudy day/night, so it is checked here.
+            if (icon === 'cloudy') {
+                if (currentHour >= 18 || currentHour <= 7) icon = 'cloudy-night';
+                else icon = 'cloudy-day';
+            }
+
             return (
                 <div key={index} className='hourly-slide flex-center'>
                     <span className='slide-time'>{convertUnixTime(hourItem.time).hour}</span>
-                    <img className='slide-icon' src={getWeatherIcon(hourItem.icon)} alt={hourItem.summary} title={hourItem.summary} />
+                    <img className='slide-icon' src={getWeatherIcon(icon)} alt={hourItem.summary} title={hourItem.summary} />
                     <span className='slide-temp'>{Math.round(hourItem.temperature)}</span>
                 </div>
             );
