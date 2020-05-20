@@ -10,6 +10,7 @@ const Options = ({ setLastUpdateTime, weatherApi }) => {
     const [showUpdater, setShowUpdater] = useState(false);
     const [useFahrenheit, setUseFahrenheit] = useState(false);
 
+    // Add an overlay when options button is clicked to handle clicking elsewhere or scrolling away.
     useEffect(() => {
         const overlay = document.querySelector('.overlay');
         overlay.addEventListener('click', () => setShowOptions(false));
@@ -20,14 +21,16 @@ const Options = ({ setLastUpdateTime, weatherApi }) => {
         }
     }, []);
 
+    // Update weather info by making new API request with either Celcius(SI) or Fahrenheit(Imperial) units.
     function handleUpdate() {
-        setShowUpdater(true);
-        setShowOptions(false);
         let nextRequest = weatherApi;
 
         if (!useFahrenheit) {
             nextRequest = `${weatherApi}?units=si`;
         }
+        // Hide Options dialogue and show Updating screen while waiting for API response.
+        setShowUpdater(true);
+        setShowOptions(false);
 
         fetch(nextRequest).then(res => res.json()).then(data => {
             updateWeather(data);
@@ -46,7 +49,7 @@ const Options = ({ setLastUpdateTime, weatherApi }) => {
             setUseFahrenheit(false);
             e.target.checked = true;
         }
-
+        // Update state with unit setting.
         switchUnits(e.target.value);
     }
 
