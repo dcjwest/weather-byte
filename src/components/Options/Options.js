@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { IconContext } from 'react-icons';
 import { BsThreeDotsVertical } from 'react-icons/bs';
-import { GlobalContext } from '../context/GlobalState';
-import cloudUrl from '../assets/images/loader/cloud-bite.svg';
+import { GlobalContext } from '../../context/GlobalState';
+import cloudUrl from '../../assets/images/loader/cloud-bite.svg';
+import './Options.css';
 
 const Options = ({ setLastUpdateTime, weatherApi }) => {
     const { switchUnits, updateWeather } = useContext(GlobalContext);

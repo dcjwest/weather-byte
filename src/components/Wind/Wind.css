@@ -1,0 +1,19 @@
+/* Wind Styles Start */
+
+.wind-wrapper {
+    margin: auto;
+    width: 100%;
+  }
+  
+  .windmill-wrapper {
+     min-height: 8em;
+     padding: 0 0.5em;
+     position: relative;
+   }
+  
+  .wind-info.flex-center {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  
+   /* Wind Styles End */

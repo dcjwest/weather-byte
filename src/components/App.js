@@ -1,20 +1,22 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import Container from 'react-bootstrap/Container';
-import Loader from './Loader';
-import Options from './Options';
-import Summary from './Summary';
+import Loader from './Loader/Loader';
+import Options from './Options/Options';
+import Summary from './Summary/Summary';
 import HourlyForecast from './HourlyForecast';
 import DailyForecast from './DailyForecast';
-import ComfortLevel from './ComfortLevel';
-import Wind from './Wind';
-import SunAndMoon from './SunAndMoon';
+import ComfortLevel from './ComfortLevel/ComfortLevel';
+import Wind from './Wind/Wind';
+import SunAndMoon from './SunAndMoon/SunAndMoon';
 import Footer from './Footer';
+import Error from './Error/Error';
 import iconList from '../assets/iconIndex';
 import './App.css';
 
 const App = () => {
   const [appLoaded, setAppLoaded] = useState(false);
+  const [showError, setShowError] = useState(false);
   const [currentLocation, setCurrentLocation] = useState('');
   const [weatherApi, setWeatherApi] = useState('');
   const [weatherData, setWeatherData] = useState({});
@@ -65,7 +67,10 @@ const App = () => {
       // Retrieve weather data for particular location. SI units used by default.
       fetch(
         `${proxy}https://api.darksky.net/forecast/6385bf526a557ab35c6534562b693fdc/${lat},${long}?units=si`
-      ).then(res => res.json()).then(data => setWeatherData(data)).catch(err => console.log('There was a problem... ', err));
+      ).then(res => res.json()).then(data => setWeatherData(data)).catch(err => {
+        console.log('There was a problem... ', err);
+        setShowError(true);
+      });
       // Store API string to be able to make future requests.
       setWeatherApi(`${proxy}https://api.darksky.net/forecast/6385bf526a557ab35c6534562b693fdc/${lat},${long}`);
     }
@@ -130,10 +135,15 @@ const App = () => {
     return dayTheme;
   }
 
+  function hideError() {
+    setTimeout(() => setShowError(false), 700);
+  }
+
   return (
     <>
       <div className='background' style={{backgroundImage: setTheme()}}></div>
-      <Loader appLoaded={appLoaded} />
+      <Loader appLoaded={appLoaded} showError={showError} />
+      { showError && <Error hideError={() => hideError()}/>}
       <div className='App'>
         <Container>
           <Options setLastUpdateTime={setLastUpdateTime} weatherApi={weatherApi} />

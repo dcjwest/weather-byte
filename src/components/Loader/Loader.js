@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import cloudUrl from '../assets/images/loader/cloud.svg';
-import cloudBiteUrl from '../assets/images/loader/cloud-bite.svg';
-import cloudBg1 from '../assets/images/loader/cloud_bg1.png';
-import cloudBg2 from '../assets/images/loader/cloud_bg2.png';
-import cloudBg3 from '../assets/images/loader/cloud_bg3.png';
-import cloudBg4 from '../assets/images/loader/cloud_bg4.png';
-import cloudBg5 from '../assets/images/loader/cloud_bg5.png';
+import cloudUrl from '../../assets/images/loader/cloud.svg';
+import cloudBiteUrl from '../../assets/images/loader/cloud-bite.svg';
+import cloudBg1 from '../../assets/images/loader/cloud_bg1.png';
+import cloudBg2 from '../../assets/images/loader/cloud_bg2.png';
+import cloudBg3 from '../../assets/images/loader/cloud_bg3.png';
+import cloudBg4 from '../../assets/images/loader/cloud_bg4.png';
+import cloudBg5 from '../../assets/images/loader/cloud_bg5.png';
 import './Loader.css';
 
-const Loader = ({ appLoaded }) => {
+const Loader = ({ appLoaded, showError }) => {
     const [loaderComplete, setLoaderComplete] = useState(false);
 
     // Trigger hiding of loader screen once animation is complete and API requests are handled.
     setTimeout(() => {
-        if (appLoaded) {
+        if (appLoaded || showError) {
             document.querySelector('.App').classList.add('show');
             setLoaderComplete(true);
         } 

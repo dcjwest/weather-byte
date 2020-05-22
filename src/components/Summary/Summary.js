@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import { GlobalContext } from '../context/GlobalState';
+import { GlobalContext } from '../../context/GlobalState';
 import Container from 'react-bootstrap/Container';
 import { IconContext } from 'react-icons';
 import { MdLocationOn } from 'react-icons/md';
-import darkSkyIconUrl from '../assets/images/darksky-icon.png';
+import darkSkyIconUrl from '../../assets/images/darksky-icon.png';
+import './Summary.css';
 
 const Summary = ({ currentLocation, updateTime }) => {
     const { currently, daily } = useContext(GlobalContext);

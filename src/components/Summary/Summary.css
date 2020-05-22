@@ -1,0 +1,64 @@
+/* Summary Styles Start */
+
+.summary-wrapper {
+    flex-direction: column;
+    min-height: 40vh;
+    position: relative;
+  }
+  
+  .location {
+    font-size: 1.7em;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  
+  .location-icon {
+    color: #fff;
+    font-size: 1.7em;
+    transition: all 0.3s ease;
+  }
+  
+  .current-temp.flex-center {
+    font-weight: 300;
+    align-items: flex-start;
+    margin: 0.5em 0;
+  }
+  
+  .current-temp-val,
+  .current-temp-deg {
+    font-size: 6.5em;
+    line-height: 1;
+  }
+  
+  .current-temp-deg { font-size: 3em; }
+  
+  .current-maxmin { margin-bottom: 0.5em; }
+  
+  .current-maxmin,
+  .current-condition { font-size: 1.2em; }
+  
+  .api-update-wrapper.flex-center {
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: -0.7em;
+    width: 100%;
+  }
+  
+  .darksky-link,
+  .last-update {
+    color: #bbb;
+    font-size: 0.8em;
+    transition: all 0.3s ease;
+  }
+  
+  .darksky-img {
+    filter: invert(70%);
+    height: 1em;
+    margin-right: 0.3em;
+    transition: filter 0.3s ease;
+  }
+  
+  .darksky-link:hover .darksky-img { filter: invert(100%); }
+  
+  /* Summary Styles End */

@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState, useCallback } from 'react';
-import { GlobalContext } from '../context/GlobalState';
+import { GlobalContext } from '../../context/GlobalState';
 import Container from 'react-bootstrap/Container';
 import { IconContext } from 'react-icons';
-import sunUrl from '../assets/images/weather-icons/clear-day.svg';
+import sunUrl from '../../assets/images/weather-icons/clear-day.svg';
+import './SunAndMoon.css';
 import {
     WiMoonAltNew,
     WiMoonAltWaxingCrescent3,

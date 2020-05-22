@@ -1,0 +1,70 @@
+/* Comfort Level Styles Start */
+
+.comfort-wrapper {
+    margin: auto;
+    width: 100%;
+  }
+ 
+  .humidity,
+  .comfort-info { flex-direction: column; }
+ 
+  .humidity-bar-wrapper { position: relative; }
+ 
+  .humidity-value {
+    font-size: 1.7em;
+    position: absolute;
+  }
+ 
+  .humidity-value::after { content: '%'; }
+ 
+  .humidity-bar {
+    width: 8em;
+    height: 8em;
+  }
+ 
+  .humidity-bar-inner,
+  .humidity-bar-outer {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-dasharray: 22em 22em;
+    stroke-dashoffset: 3.7em;
+    stroke-linecap: round;
+    stroke-width: 0.5em;
+    transform-origin: 50% 50%;
+    transform: rotate(120deg);
+    transition: 1s linear;
+  }
+ 
+  .humidity-bar-inner { stroke: #fff; }
+ 
+ .humidity-bar-level {
+   color: var(--accent);
+   margin-top: -0.5em;
+ }
+ 
+ .comfort-info.flex-center {
+   padding: 0.0.5em;
+   align-items: stretch;
+ }
+ 
+ .data_title,
+ .data_value,
+ .humidity-bar-level {
+   font-size: 0.9em;
+   font-weight: 300;
+ }
+ 
+ .data_title {
+   color: var(--accent);
+   text-align: right;
+ }
+ 
+ .data_title,
+ .data_value { padding: 0 0.5em; }
+ 
+ .data_value {
+   padding-right: 0;
+   word-break: break-all;
+ }
+ 
+   /* Comfort Level Styles End */

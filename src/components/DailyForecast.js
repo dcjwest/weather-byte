@@ -13,12 +13,19 @@ const DailyForecast = ({ convertUnixTime, getWeatherIcon }) => {
 
             if (index === 0) return null; // Skip over first item which represents today.
             let nextDayInfo = convertUnixTime(dayItem.time);
-            if (index === 1) nextDayInfo.day = 'Tomorrow';
+            let nextDayElement;
+            if (index === 1) {
+                nextDayInfo.day = 'Tomorrow';
+                nextDayElement = <div>{`${nextDayInfo.day},`}<br/>{`${nextDayInfo.date} ${nextDayInfo.month}`}</div>
+            }
+            else {
+                nextDayElement = <div>{`${nextDayInfo.day}, ${nextDayInfo.date} ${nextDayInfo.month}`}</div>
+            }
 
             return (
                 <Row key={index} className='daily-row'>
                     <Col className='daily-date flex-center' xs={6} sm={4}>
-                        <span>{`${nextDayInfo.day}, ${nextDayInfo.date} ${nextDayInfo.month}`}</span>
+                        {nextDayElement}
                     </Col>
                     <Col className='daily-icon flex-center' xs={2} sm={4}>
                         <img src={getWeatherIcon(dayItem.icon)} alt={dayItem.summary} title={dayItem.summary} />

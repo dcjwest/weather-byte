@@ -1,0 +1,84 @@
+/* Sun and Moon Styles Start */
+
+.sunrise-sunset-wrapper {
+    margin-bottom: -1rem;
+    overflow: hidden;
+  }
+  
+  .sun-path-wrapper {
+    font-size: 11px;
+    margin: auto;
+    position: relative;
+    width: 20em;
+    height: 10em;
+  }
+  
+  .sun-path {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 20em;
+  }
+  
+  .sun-path-full,
+  .sun-path-current {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 2px;
+    stroke-dasharray: 0.5em 0.4em;
+    stroke-dashoffset: 30em;
+    transform-origin: 50% 50%;
+    transform: rotate(180deg);
+  }
+  
+  .sun-path-current {
+    stroke: #ffd800;
+    stroke-dasharray: 60em 60em;
+    stroke-dashoffset: 60em;
+    transition: 1s linear;
+  }
+  
+  .sun-wrapper {
+    position: absolute;
+    bottom: -9.5em;
+    height: 19em;
+    width: 19em;
+    transition: 1s linear;
+  }
+  
+  .sun {
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.5s ease;
+    width: 1.7em;
+  }
+  
+  .sun:hover {
+    transform: translate(-50%, -50%) rotate(90deg) scale(1.5);
+  }
+  
+  .sunrise-time,
+  .sunset-time,
+  .lunar-phase-wrapper {
+    color: var(--accent);
+    font-size: 0.9em;
+    font-weight: 300;
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .sunrise-time { left: 0; transform: translateX(-140%); }
+  .sunset-time { right: 0; transform: translateX(140%);}
+  .lunar-phase-wrapper { left: 50%; transform: translateX(-50%); }
+  
+  .lunar-phase-wrapper span { margin-left: 0.2em; }
+  
+  .lunar-icon {
+    color: var(--accent);
+    font-size: 1.5em;
+  }
+  
+  /* Sun and Moon Styles End */
