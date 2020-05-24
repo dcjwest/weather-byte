@@ -10,7 +10,7 @@ const Error = ({ hideError }) => {
 
     return (
         <div className='error-wrapper flex-center'>
-            <div className='overlay'></div>
+            <div className='error-bg'></div>
             <div className='error-cloud-wrapper flex-center'>
                 <img src={errorCloudUrl} alt='error page' />
                 <p>Seems we're having trouble serving you that byte.</p>

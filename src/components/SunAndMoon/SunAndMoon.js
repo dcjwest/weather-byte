@@ -28,10 +28,11 @@ const SunAndMoon = () => {
         sunset_time = sunsetTime;
         fullDayTime = sunset_time - sunrise_time;
         lunarPhase = getLunarPhaseText(moonPhase);
+        setSunPosition();
     }
 
-    // Animate sun's position/trajectory on scroll.
-    useEffect(() => {
+    // Set sun's position/trajectory based on time of day.
+    function setSunPosition() {
         const sunWrapper = document.querySelector('.sun-wrapper');
         const sunCurrentPath = document.querySelector('.sun-path-current');
         const timeNow = Math.floor(new Date().getTime() / 1000);
@@ -66,7 +67,7 @@ const SunAndMoon = () => {
         sunCurrentPath.style.strokeDashoffset = offset;
         sunWrapper.style.transform = `rotate(${degreesToRotate}deg)`;
 
-    }, [animateSun, sunrise_time, fullDayTime]);
+    }
 
     const checkPosition = useCallback(() => {
         const sunWrapper = document.querySelector('.sun-wrapper');

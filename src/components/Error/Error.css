@@ -22,25 +22,28 @@
       transform: translate(100%);
     }
   }
+
+  .error-bg {
+    background-color: rgba(0,0,0,0.7);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+  }
   
   .error-cloud-wrapper {
-    background: rgb(7,58,81);
-    /* background: radial-gradient(circle, rgb(12,103,142) 33%, rgb(7,58,81) 67%, rgb(5,44,61) 100%); */
-    background: radial-gradient(circle at 50% 40%, #021821 20%, rgb(5,44,61) 33%, rgb(7,58,81) 67%, rgb(12,103,142) 100%);
+    background-color: #333;
     border-radius: 0.5em;
     flex-direction: column;
+    overflow: hidden;
     padding: 1em;
     position: absolute;
     text-align: center;
     width: 90%;
     height: 90%;
     z-index: 2;
-  }
-  
-  .error-wrapper .overlay {
-    background-color: rgba(0,0,0,0.7);
-    transform: translateX(0);
-    z-index: 1;
   }
   
   .error-cloud-wrapper img { width: 16em; }

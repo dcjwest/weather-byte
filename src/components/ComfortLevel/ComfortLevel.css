@@ -35,7 +35,10 @@
     transition: 1s linear;
   }
  
-  .humidity-bar-inner { stroke: #fff; }
+  .humidity-bar-inner {
+    stroke: #fff;
+    stroke-dashoffset: 22em;
+  }
  
  .humidity-bar-level {
    color: var(--accent);

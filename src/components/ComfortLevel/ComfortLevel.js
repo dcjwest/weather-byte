@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { GlobalContext } from '../../context/GlobalState';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -6,6 +6,8 @@ import Col from 'react-bootstrap/Col';
 import './ComfortLevel.css';
 
 const ComfortLevel = () => {
+    const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+    const [animateHumidity, setAnimateHumidity] = useState(false);
     const { currently } = useContext(GlobalContext);
     let feelsLikeTemp = 0, humidityLevel = 0, uvIndexNum = 0;
 
@@ -16,19 +18,45 @@ const ComfortLevel = () => {
         humidityLevel = humidity;
         uvIndexNum = uvIndex;
 
-        setHumidityBar(humidityLevel);
+        setHumidityBar();
     }
 
     // Set humidity level by adjusting stroke properties of humidity bar svg.
-    function setHumidityBar(humidity) {
+    function setHumidityBar() {
         const humidityBar = document.querySelector('.humidity-bar-inner');
-        const radius = humidityBar.r.baseVal.value;
-        const circumference = Math.round(2 * Math.PI * radius);
         const rootFontSize = parseFloat(window.getComputedStyle(document.documentElement).getPropertyValue('font-size'));
-        // Note: 3.7em added to account for humidity bar's "open ring" shape.
-        const offset = (circumference + 3.7*rootFontSize) - humidity * circumference;
+        let offset;
+
+        // Animate humidity bar from 0 to current position if visible in viewport.
+        if (animateHumidity) {
+            const radius = humidityBar.r.baseVal.value;
+            const circumference = Math.round(2 * Math.PI * radius);
+            // Note: 3.7em added to account for humidity bar's "open ring" shape.
+            offset = (circumference + 3.7*rootFontSize) - humidityLevel * circumference;
+        }
+        else offset = 22*rootFontSize; // Reset humidity bar when not in viewport.
+
         humidityBar.style.strokeDashoffset = offset;
     }
+
+    const checkPosition = useCallback(() => {
+        const humiditySvg = document.querySelector('.humidity-bar');
+        const humidityPositionFromTop = humiditySvg.getBoundingClientRect().top;
+
+        if (humidityPositionFromTop - windowHeight <= 0) setAnimateHumidity(true);
+        else setAnimateHumidity(false);
+    }, [windowHeight]);
+
+    // Check whether window is resized or if user scrolls down to animate humidity bar on scroll.
+    useEffect(() => {
+        window.addEventListener('scroll', checkPosition);
+        window.addEventListener('resize', () => setWindowHeight(window.innerHeight));
+
+        return () => {
+            window.removeEventListener('scroll', checkPosition);
+            window.removeEventListener('resize', () => setWindowHeight(window.innerHeight));
+        }
+    }, [checkPosition]);
 
     return (
         <Container>
