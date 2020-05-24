@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/weather-byte/static/css/main.f964f256.chunk.css",
-    "main.js": "/weather-byte/static/js/main.2af119ac.chunk.js",
-    "main.js.map": "/weather-byte/static/js/main.2af119ac.chunk.js.map",
+    "main.css": "/weather-byte/static/css/main.f659a670.chunk.css",
+    "main.js": "/weather-byte/static/js/main.32188d40.chunk.js",
+    "main.js.map": "/weather-byte/static/js/main.32188d40.chunk.js.map",
     "runtime-main.js": "/weather-byte/static/js/runtime-main.6a6d7b65.js",
     "runtime-main.js.map": "/weather-byte/static/js/runtime-main.6a6d7b65.js.map",
-    "static/js/2.b04c61d6.chunk.js": "/weather-byte/static/js/2.b04c61d6.chunk.js",
-    "static/js/2.b04c61d6.chunk.js.map": "/weather-byte/static/js/2.b04c61d6.chunk.js.map",
+    "static/js/2.f6ba22b4.chunk.js": "/weather-byte/static/js/2.f6ba22b4.chunk.js",
+    "static/js/2.f6ba22b4.chunk.js.map": "/weather-byte/static/js/2.f6ba22b4.chunk.js.map",
     "index.html": "/weather-byte/index.html",
-    "precache-manifest.bedcee2a2ec8cd0b5bad8c9f9aa15ab0.js": "/weather-byte/precache-manifest.bedcee2a2ec8cd0b5bad8c9f9aa15ab0.js",
+    "precache-manifest.9f3a1aec2d3396107ff6047580ddfafe.js": "/weather-byte/precache-manifest.9f3a1aec2d3396107ff6047580ddfafe.js",
     "service-worker.js": "/weather-byte/service-worker.js",
-    "static/css/main.f964f256.chunk.css.map": "/weather-byte/static/css/main.f964f256.chunk.css.map",
-    "static/js/2.b04c61d6.chunk.js.LICENSE.txt": "/weather-byte/static/js/2.b04c61d6.chunk.js.LICENSE.txt",
+    "static/css/main.f659a670.chunk.css.map": "/weather-byte/static/css/main.f659a670.chunk.css.map",
+    "static/js/2.f6ba22b4.chunk.js.LICENSE.txt": "/weather-byte/static/js/2.f6ba22b4.chunk.js.LICENSE.txt",
     "static/media/clear-day.svg": "/weather-byte/static/media/clear-day.fbbe405e.svg",
     "static/media/clear-night.svg": "/weather-byte/static/media/clear-night.08655708.svg",
     "static/media/cloud-bite.svg": "/weather-byte/static/media/cloud-bite.4de8985c.svg",
@@ -34,8 +34,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.6a6d7b65.js",
-    "static/js/2.b04c61d6.chunk.js",
-    "static/css/main.f964f256.chunk.css",
-    "static/js/main.2af119ac.chunk.js"
+    "static/js/2.f6ba22b4.chunk.js",
+    "static/css/main.f659a670.chunk.css",
+    "static/js/main.32188d40.chunk.js"
   ]
 }
