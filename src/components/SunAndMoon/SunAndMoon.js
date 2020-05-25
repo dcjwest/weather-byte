@@ -130,25 +130,28 @@ const SunAndMoon = () => {
             lunarIcon = lunarIcons[lunarIndex];
             return lunarPhases[lunarIndex];
         }
-
         // Determine in between ranges.
-        switch(lunarIndex) {
+        else {
             // Waxing Crescent
-            case lunarIndex > 0 && lunarIndex < 2:
+            if (lunarIndex > 0 && lunarIndex < 2) {
                 lunarIcon = lunarIcons[1];
                 return lunarPhases[1];
+            }   
             // Waxing Gibbous
-            case lunarIndex > 2 && lunarIndex < 4:
+            else if (lunarIndex > 2 && lunarIndex < 4) {
                 lunarIcon = lunarIcons[3];
                 return lunarPhases[3];
+            }
             // Waning Gibbous
-            case lunarIndex > 4 && lunarIndex < 6:
+            else if (lunarIndex > 4 && lunarIndex < 6) {
                 lunarIcon = lunarIcons[5];
                 return lunarPhases[5];
+            }  
             // Waning Crescent
-            default:
+            else {
                 lunarIcon = lunarIcons[7];
                 return lunarPhases[7];
+            } 
         }
     }
     
