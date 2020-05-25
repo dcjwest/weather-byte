@@ -1,12 +1,20 @@
 /* Options Styles Start */
 
 .options-wrapper {
+  padding: 1em;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-height: 5vh;
+}
+
+.options-btn-wrapper {
   float: right;
-  margin-top: 1em;
   position: relative;
 }
   
-.options-wrapper hr {
+.options-btn-wrapper hr {
   background-color: rgba(0,0,0,0.3);;
   margin: 0.4em 0;
 }

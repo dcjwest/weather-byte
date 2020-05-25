@@ -2,6 +2,7 @@
 
 .App {
   overflow: hidden;
+  padding-top: 5vh;
   position: absolute;
   width: 100%;
   height: 100%;

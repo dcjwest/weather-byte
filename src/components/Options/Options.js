@@ -56,36 +56,38 @@ const Options = ({ setLastUpdateTime, weatherApi }) => {
 
     return (
         <div className='options-wrapper'>
-            <button className='options-btn' onClick={() => setShowOptions(!showOptions)}>
-                <IconContext.Provider value={{className: 'options-icon'}} >
-                    <BsThreeDotsVertical />
-                </IconContext.Provider>
-            </button>
-            <div className={`options-list ${showOptions? 'show':'hide'}`}>
-                <form className='unit-toggle-wrapper' onSubmit={e => e.preventDefault()}>
-                    <label htmlFor='cel'>
-                        <input type='radio' id='cel' value='cel' name='unit' onChange={handleRadioBtn}/>&deg;C
-                    </label>
-                    <label htmlFor='fah'>
-                        <input type='radio' id='fah' value='fah' name='unit' onChange={handleRadioBtn}/>&deg;F
-                    </label>
-                </form>
-                <hr />
-                <button onClick={handleUpdate}>Update</button>
-            </div>
-            <div className={`overlay ${showOptions? 'show': ''}`}></div>
-            {
-                showUpdater && 
-                <div className='updating-screen flex-center'>
-                    <img src={cloudUrl} alt='cloud animation' />
-                    <p>Updating</p>
-                    <div className='loading-dots flex-center'>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
+            <div className='options-btn-wrapper'>
+                <button className='options-btn' onClick={() => setShowOptions(!showOptions)}>
+                    <IconContext.Provider value={{className: 'options-icon'}} >
+                        <BsThreeDotsVertical />
+                    </IconContext.Provider>
+                </button>
+                <div className={`options-list ${showOptions? 'show':'hide'}`}>
+                    <form className='unit-toggle-wrapper' onSubmit={e => e.preventDefault()}>
+                        <label htmlFor='cel'>
+                            <input type='radio' id='cel' value='cel' name='unit' onChange={handleRadioBtn}/>&deg;C
+                        </label>
+                        <label htmlFor='fah'>
+                            <input type='radio' id='fah' value='fah' name='unit' onChange={handleRadioBtn}/>&deg;F
+                        </label>
+                    </form>
+                    <hr />
+                    <button onClick={handleUpdate}>Update</button>
                 </div>
-            }
+                <div className={`overlay ${showOptions? 'show': ''}`}></div>
+                {
+                    showUpdater && 
+                    <div className='updating-screen flex-center'>
+                        <img src={cloudUrl} alt='cloud animation' />
+                        <p>Updating</p>
+                        <div className='loading-dots flex-center'>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
     );
 }
