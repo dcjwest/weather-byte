@@ -3,7 +3,7 @@
 
 This project was inspired by the simple yet modern and intuitive Huawei Weather app interface. It gives a swift overview of current and upcoming weather conditions at any given set of coordinates. Provided that GPS is enabled, user/device location (i.e. current town or city) is retrieved with the [LocationIQ Geocoding API](https://locationiq.com/geocoding), while all weather-related data is supplied by the [Dark Sky API](https://darksky.net/dev).
 
-In addition to providing a summary of current temperatures and conditions at the top of the screen, Weather-byte also features:
+In addition to providing a summary of current temperatures and conditions at the top of the screen, Weather-Byte also features:
 - a swipeable carousel of **hourly** weather details for the next 24 hours
 - upcoming **daily** weather information, incuding maximum and minimum temperatures for the next week
 - sunrise/sunset times as well as current moon phase
