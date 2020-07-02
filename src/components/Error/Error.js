@@ -12,9 +12,12 @@ const Error = ({ hideError }) => {
         <div className='error-wrapper flex-center'>
             <div className='error-bg'></div>
             <div className='error-cloud-wrapper flex-center'>
+                <div className='error-heading'>
+                    <h2>404</h2>
+                    <div className='error-sign flex-center'><span>ERROR</span></div>
+                </div>
                 <img src={errorCloudUrl} alt='error page' />
-                <p>Seems we're having trouble serving you that byte.</p>
-                <p>Please try reloading in a moment.</p>
+                <p>Seems we're having trouble serving you that byte.<br />Please try reloading in a moment.</p>
                 <button onClick={handleClick}>okay</button>
             </div>
         </div>

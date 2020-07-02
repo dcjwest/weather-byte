@@ -40,7 +40,7 @@ const App = () => {
     });
   }
 
-  // Code below run only on-mount to determine user's location and weather data.
+  // Code below run only on-mount to determine user's location and fetch weather data.
   useEffect(() => {
     async function getInitialWeatherData() {
       const DEFAULT_LATITUDE = -33.934444, DEFAULT_LONGITUDE = 18.869167;  // Stellenbosch set as default.
@@ -71,7 +71,7 @@ const App = () => {
         console.log('There was a problem... ', err);
         setShowError(true);
       });
-      // Store API string to be able to make future requests.
+      // Store API string to be able to make future update requests.
       setWeatherApi(`${proxy}https://api.darksky.net/forecast/6385bf526a557ab35c6534562b693fdc/${lat},${long}`);
     }
 
@@ -136,7 +136,7 @@ const App = () => {
   }
 
   function hideError() {
-    setTimeout(() => setShowError(false), 700);
+    setTimeout(() => setShowError(false), 500);
   }
 
   return (
