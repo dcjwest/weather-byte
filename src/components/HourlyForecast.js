@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import Swiper from 'react-id-swiper';
+import { IconContext } from 'react-icons';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 const HourlyForecast = ({ convertUnixTime, getWeatherIcon }) => {
     // Swiper Parameters
@@ -44,9 +46,11 @@ const HourlyForecast = ({ convertUnixTime, getWeatherIcon }) => {
 
     return (
         <div className='hourly-forecast-swiper flex-center'>
+            <IconContext.Provider value={{className: 'swiper-icon'}}><IoIosArrowBack /></IconContext.Provider>
             <Swiper {...params}>
                 { hourCarousel}
             </Swiper>
+            <IconContext.Provider value={{className: 'swiper-icon'}}><IoIosArrowForward /></IconContext.Provider>
         </div>
     );
 }
