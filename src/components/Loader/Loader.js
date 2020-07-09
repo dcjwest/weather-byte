@@ -20,7 +20,7 @@ const Loader = ({ appLoaded, showError }) => {
     }, 5000);
 
     return (
-        <div className={`loader flex-center ${(appLoaded || showError) && loaderComplete? 'hide':''}`}>
+        <div className={`loader flex-center ${loaderComplete? 'hide':''}`}>
             <div className='cloud-wrapper flex-center'>
                 <img className='cloud' src={cloudUrl} alt='cloud' />
                 <img className='cloud-bite' src={cloudBiteUrl} alt='cloud' />
