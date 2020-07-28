@@ -17,7 +17,7 @@ const Error = ({ hideError }) => {
                     <div className='error-sign flex-center'><span>ERROR</span></div>
                 </div>
                 <img src={errorCloudUrl} alt='error page' />
-                <p>Seems we're having trouble serving you that byte.<br />Please try reloading in a moment.</p>
+                <p>Seems we're having trouble serving you that byte... Some placeholder weather data will be served temporarily.<br />Please try reloading in a moment for the latest updates.</p>
                 <button onClick={handleClick}>okay</button>
             </div>
         </div>

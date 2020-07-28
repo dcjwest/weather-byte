@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
+import { dummyData } from '../context/dummyData';
+
+// Components
 import Container from 'react-bootstrap/Container';
 import Loader from './Loader/Loader';
 import Options from './Options/Options';
@@ -60,28 +63,32 @@ const App = () => {
       }
 
       // Get location with given coordinates.
-      fetch(
-        `https://us1.locationiq.com/v1/reverse.php?key=56552b4b1c4b9a&lat=${lat}&lon=${long}&format=json`
-      ).then(res => res.json()).then(data => setCurrentLocation(data.address.town)).catch(err => {
-        console.log('LocationIQ: There was a problem... ', err);
-        if (lat === DEFAULT_LATITUDE && long === DEFAULT_LONGITUDE) setCurrentLocation('Stellenbosch');
-        else setCurrentLocation('Unknown');
-      });
+      fetch(`https://us1.locationiq.com/v1/reverse.php?key=56552b4b1c4b9a&lat=${lat}&lon=${long}&format=json`)
+        .then(res => res.json())
+        .then(data => setCurrentLocation(data.address.town))
+        .catch(err => {
+          console.log('LocationIQ: There was a problem... ', err);
+          if (lat === DEFAULT_LATITUDE && long === DEFAULT_LONGITUDE) setCurrentLocation('Stellenbosch');
+          else setCurrentLocation('Unknown');
+        });
 
       // Retrieve weather data for particular location. SI units used by default.
-      fetch(
-        `${proxy}https://api.darksky.net/forecast/6385bf526a557ab35c6534562b693fdc/${lat},${long}?units=si`
-      ).then(res => res.json()).then(data => setWeatherData(data)).catch(err => {
-        console.log('DarkSky: There was a problem... ', err);
-        setShowError(true);
-      });
+      fetch(`${proxy}https://api.darksky.net/forecast/6385bf526a557ab35c6534562b693fdc/${lat},${long}?units=si`)
+        .then(res => res.json())
+        .then(data => setWeatherData(data))
+        .catch(err => {
+          console.log('DarkSky: There was a problem... ', err);
+          setShowError(true);
+          setInitialWeather(dummyData);
+        });
+
       // Store API string to be able to make future update requests.
       setWeatherApi(`${proxy}https://api.darksky.net/forecast/6385bf526a557ab35c6534562b693fdc/${lat},${long}`);
     }
 
     getInitialWeatherData();
 
-  }, []);
+  }, [setInitialWeather]);
 
   // Initialise app with retrieved data.
   useEffect(() => {
