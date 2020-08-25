@@ -26,13 +26,19 @@
   transition: 0.5s ease;
 }
 
-.min { color: #bbb; }
-.min::before { content: '\2009/ ';}
+.min {
+  color: #bbb;
+}
+.min::before {
+  content: "\2009/ ";
+}
 
 .max::after,
 .min::after,
 .temp::after,
-.slide-temp::after { content: '\00b0'; }
+.slide-temp::after {
+  content: "\00b0";
+}
 
 .widget-title {
   font-size: 1.1em;
@@ -41,7 +47,9 @@
   text-transform: uppercase;
 }
 
-.widget-subtitle { font-size: 0.9em; }
+.widget-subtitle {
+  font-size: 0.9em;
+}
 
 /* ===================== */
 
@@ -62,8 +70,13 @@
 }
 
 @keyframes flash-swipe-icon {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .swiper-icon:first-child {
@@ -81,41 +94,64 @@
 }
 
 .slide-icon {
-  margin: 1em 0;
-  width: 1.5em;
+  margin: 0.1em 0 0.4em;
+  width: 1.6em;
 }
 
-.slide-time {
+.slide-time,
+.slide-rain {
   font-size: 0.8em;
-  font-weight: 300
- }
+  font-weight: 300;
+}
 
- .swiper-placeholder { opacity: 0; }
+.slide-rain {
+  font-size: 0.7em;
+  margin-top: 0.2em;
+}
+.slide-rain.hide {
+  opacity: 0;
+}
 
- /* Hourly Forecast Styles End */
+.swiper-placeholder {
+  opacity: 0;
+}
+
+/* Hourly Forecast Styles End */
 
 /* ===================== */
 
 /* Daily Forecast Styles Start */
 
-.daily-forecast-wrapper { margin: -1rem 0; }
+.daily-forecast-wrapper {
+  margin: -1rem 0;
+}
 
 .daily-row {
   height: 3em;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.daily-row:last-child { border-bottom: none;}
+.daily-row:last-child {
+  border-bottom: none;
+}
 
-.daily-date { justify-content: flex-start;}
+.daily-date {
+  justify-content: flex-start;
+}
 
-.daily-date div { width: 6em; }
+.daily-date div {
+  width: 6em;
+}
 
-.daily-icon img { width: 2em; }
+.daily-icon img {
+  width: 2em;
+}
 
-.daily-temps  { justify-content: flex-end; }
+.daily-temps {
+  justify-content: flex-end;
+}
 
- /* Daily Forecast Styles End */
+/* Daily Forecast Styles End */
 
 /* ===================== */
 
@@ -128,11 +164,17 @@
   text-align: center;
 }
 
-.footer-wrapper { margin-bottom: 1.5em; }
+.footer-wrapper {
+  margin-bottom: 1.5em;
+}
 
-.footer-wrapper a { transition: 0.3s ease; }
+.footer-wrapper a {
+  transition: 0.3s ease;
+}
 
-.footer-wrapper a:hover { color: #fff; }
+.footer-wrapper a:hover {
+  color: #fff;
+}
 
 .footer-wrapper .author {
   font-size: 0.9rem;
@@ -144,17 +186,20 @@
 /* ===================== */
 
 @media (min-width: 375px) {
-  .daily-date span { max-width: 100%; }
-  
-  .sun-path-wrapper { font-size: 13px; }
+  .daily-date span {
+    max-width: 100%;
+  }
+
+  .sun-path-wrapper {
+    font-size: 13px;
+  }
 }
 
 @media (min-width: 768px) {
-
   .hourly-forecast-swiper .swiper-icon {
     font-size: 2.5rem;
   }
-  
+
   .data_title,
   .data_value,
   .humidity-bar-level {
@@ -163,5 +208,7 @@
   }
 
   .wind-wrapper,
-  .comfort-wrapper { width: 70%; }
+  .comfort-wrapper {
+    width: 70%;
+  }
 }
