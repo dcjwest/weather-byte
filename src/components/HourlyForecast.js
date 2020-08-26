@@ -41,11 +41,9 @@ const HourlyForecast = ({ convertUnixTime, getWeatherIcon }) => {
       return (
         <div key={index} className="hourly-slide flex-center">
           <span className="slide-time">
-            {convertUnixTime(hourItem.time).hour}
+            {index === 0 ? "Now" : convertUnixTime(hourItem.time).hour}
           </span>
-          <span
-            className={`slide-rain ${rainPercentage >= 50 ? "show" : "hide"}`}
-          >
+          <span className={`slide-rain ${rainPercentage < 50 ? "hide" : ""}`}>
             {`${rainPercentage}%`}
           </span>
           <img
