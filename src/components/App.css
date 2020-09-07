@@ -1,54 +1,54 @@
 /* General App Styles */
 
 .App {
-  overflow: hidden;
-  padding-top: 5vh;
-  position: absolute;
-  width: 100%;
-  height: 100%;
+    overflow: hidden;
+    padding-top: 5vh;
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 .App.show {
-  overflow: initial;
-  position: relative;
+    overflow: initial;
+    position: relative;
 }
 
 .background {
-  background: var(--bg-day);
-  background-attachment: fixed;
-  background-size: cover;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  transition: 0.5s ease;
+    background: var(--bg-day);
+    background-attachment: fixed;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    transition: 0.5s ease;
 }
 
 .min {
-  color: #bbb;
+    color: #bbb;
 }
 .min::before {
-  content: "\2009/ ";
+    content: '\2009/ ';
 }
 
 .max::after,
 .min::after,
 .temp::after,
 .slide-temp::after {
-  content: "\00b0";
+    content: '\00b0';
 }
 
 .widget-title {
-  font-size: 1.1em;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+    font-size: 1.1em;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .widget-subtitle {
-  font-size: 0.9em;
+    font-size: 0.9em;
 }
 
 /* ===================== */
@@ -56,64 +56,50 @@
 /* Hourly Forecast Styles Start */
 
 .hourly-forecast-swiper {
-  position: relative;
-  text-align: center;
-  width: 100%;
-  height: 6em;
-}
-
-.hourly-forecast-swiper .swiper-icon {
-  animation: flash-swipe-icon 2s linear infinite;
-  font-size: 1.6rem;
-  opacity: 0.7;
-  position: absolute;
-}
-
-@keyframes flash-swipe-icon {
-  0%,
-  100% {
-    opacity: 0.7;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-.swiper-icon:first-child {
-  left: 0;
-  transform: translateX(-50%);
-}
-.swiper-icon:last-child {
-  right: 0;
-  transform: translateX(50%);
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 6em;
 }
 
 .hourly-slide {
-  flex-direction: column;
-  justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .slide-icon {
-  margin: 0.1em 0 0.4em;
-  width: 1.6em;
+    margin: 0.1em 0 0.4em;
+    width: 1.6em;
 }
 
 .slide-time,
 .slide-rain {
-  font-size: 0.8em;
-  font-weight: 300;
+    font-size: 0.8em;
+    font-weight: 300;
 }
 
 .slide-rain {
-  font-size: 0.7em;
-  margin-top: 0.2em;
+    font-size: 0.7em;
+    margin-top: 0.2em;
 }
 .slide-rain.hide {
-  opacity: 0;
+    opacity: 0;
 }
 
 .swiper-placeholder {
-  opacity: 0;
+    opacity: 0;
+}
+
+.swiper-button-next.hourCarousel,
+.swiper-button-prev.hourCarousel {
+    color: #fff;
+}
+
+.swiper-button-next.hourCarousel {
+    right: 0;
+}
+.swiper-button-prev.hourCarousel {
+    left: 0;
 }
 
 /* Hourly Forecast Styles End */
@@ -123,32 +109,32 @@
 /* Daily Forecast Styles Start */
 
 .daily-forecast-wrapper {
-  margin: -1rem 0;
+    margin: -1rem 0;
 }
 
 .daily-row {
-  height: 3em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    height: 3em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .daily-row:last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 .daily-date {
-  justify-content: flex-start;
+    justify-content: flex-start;
 }
 
 .daily-date div {
-  width: 6em;
+    width: 6em;
 }
 
 .daily-icon img {
-  width: 2em;
+    width: 2em;
 }
 
 .daily-temps {
-  justify-content: flex-end;
+    justify-content: flex-end;
 }
 
 /* Daily Forecast Styles End */
@@ -158,27 +144,27 @@
 /* Footer Styles Start */
 
 .footer-wrapper {
-  color: #bbb;
-  font-size: 0.7em;
-  font-weight: 300;
-  text-align: center;
+    color: #bbb;
+    font-size: 0.7em;
+    font-weight: 300;
+    text-align: center;
 }
 
 .footer-wrapper {
-  margin-bottom: 1.5em;
+    margin-bottom: 1.5em;
 }
 
 .footer-wrapper a {
-  transition: 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .footer-wrapper a:hover {
-  color: #fff;
+    color: #fff;
 }
 
 .footer-wrapper .author {
-  font-size: 0.9rem;
-  font-weight: 400;
+    font-size: 0.9rem;
+    font-weight: 400;
 }
 
 /* Footer Styles End */
@@ -186,29 +172,29 @@
 /* ===================== */
 
 @media (min-width: 375px) {
-  .daily-date span {
-    max-width: 100%;
-  }
+    .daily-date span {
+        max-width: 100%;
+    }
 
-  .sun-path-wrapper {
-    font-size: 13px;
-  }
+    .sun-path-wrapper {
+        font-size: 13px;
+    }
 }
 
 @media (min-width: 768px) {
-  .hourly-forecast-swiper .swiper-icon {
-    font-size: 2.5rem;
-  }
+    .hourly-forecast-swiper .swiper-icon {
+        font-size: 2.5rem;
+    }
 
-  .data_title,
-  .data_value,
-  .humidity-bar-level {
-    font-size: 1em;
-    font-weight: 300;
-  }
+    .data_title,
+    .data_value,
+    .humidity-bar-level {
+        font-size: 1em;
+        font-weight: 300;
+    }
 
-  .wind-wrapper,
-  .comfort-wrapper {
-    width: 70%;
-  }
+    .wind-wrapper,
+    .comfort-wrapper {
+        width: 70%;
+    }
 }
